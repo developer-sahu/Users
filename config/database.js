@@ -3,7 +3,7 @@ import config from "./config.js";
 
 const { host, name, user, password, dialect, logging } = config.database;
 
-export const sequelize = new Sequelize(name, user, password, { host, dialect, logging, });
+export const DB = new Sequelize(name, user, password, { host, dialect, logging, });
 
 export const connectToDB = async () => {
     try {
