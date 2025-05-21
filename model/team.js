@@ -1,8 +1,7 @@
 import { DB } from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-
-const TeamCreate  = DB.define ("Team" , {
+const Team = DB.define ("Team" , {
     id :{
         type : DataTypes.INTEGER,
         autoIncrement : true ,
@@ -14,5 +13,11 @@ const TeamCreate  = DB.define ("Team" , {
         allowNull : true ,
 
     },
+    discription :{
+        type : DataTypes.JSON,
+        allowNull : true,
+    },
     
-})
+});
+
+export default Team;

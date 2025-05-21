@@ -1,9 +1,10 @@
+import User from "./user.js"
+import Team from "./team.js";
 
 
+// Team Creation  Association 
+Team.hasMany(User, { foreignKey: 'teamId', as: 'members' });
+User.belongsTo(Team, { foreignKey: 'teamId', as: 'team' });
 
 
-
-
-// Team Creation  Association //
-User.hasMany(Team, { foreignKey: 'teamLeaderId', as: 'ledTeams' });
-Team.belongsTo(User, { foreignKey: 'teamLeaderId', as: 'teamLeader' });
+export { User, Team };

@@ -7,9 +7,9 @@ export const DB = new Sequelize(name, user, password, { host, dialect, logging, 
 
 export const connectToDB = async () => {
     try {
-        await sequelize.authenticate();
+        await DB.authenticate();
         console.log('Database Connected...!');
-        await sequelize.sync({ alter: true })
+        await DB.sync({ alter: true })
     } catch (error) {
         console.log('Error Connecting Database!', error)
     }

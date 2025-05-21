@@ -1,7 +1,6 @@
-import User from "../model/user.js";
+import { User } from "../model/index.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-
 import config from "../config/config.js";
 
 const { secret, expiresIn } = config.jwt;
@@ -59,7 +58,7 @@ export const loginUser = async (req, res) => {
     }
 };
 
-export const logoutUser = async (req,res) => {
+export const logoutUser = async (req, res) => {
     try {
         res.status(200).json({ message: "Logout Successfully" })
     } catch (error) {
