@@ -5,6 +5,7 @@ import express from 'express';
 import config from './config/config.js';
 import { connectToDB } from './config/database.js';
 import authRoutes from './routes/auth.routes.js';
+import teamRoutes from './routes/team.routes.js'
 
 const app = express();
 const PORT = config.port;
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/team', teamRoutes);
+
 
 (async () => {
     try {
