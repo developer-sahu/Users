@@ -1,9 +1,9 @@
 
-import {Team, User} from "../model/index.js"
+import { Team, User } from "../model/index.js"
 
-export const createTeam = async (req, res, next) => {
+export const createTeam = async (req, res) => {
     try {
-        const { team_name, discription } = req.body;
+        const { team_name, discription, department } = req.body;
 
         const checkTeam = await Team.findOne({
             where: { team_name }
@@ -14,37 +14,61 @@ export const createTeam = async (req, res, next) => {
         }
 
         const newTeam = await Team.create({
-            team_name, 
-            discription ,
+            team_name,
+            discription,
+            department,
         });
-        res.status(201).json({ message: "Team Created Successfully" , newTeam });
+        res.status(201).json({ message: "Team Created Successfully", newTeam });
 
     } catch (error) {
         console.error(error);
     }
 };
 
-export const assignTouser = async (req , res ,next) => {
+export const assignTouser = async (req, res, next) => {
 
-    const {userId , teamId} = req.body;
+    const { userId, teamId } = req.body;
     try {
         const user = await User.findByPk(userId);
-        if (!user){
-            return res.status(404).json({message : "User not found"});
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
         }
 
         const team = await Team.findByPk(teamId);
-        if (!team){
-            return res.status(404).json({message :"Team not found"});
+        if (!team) {
+            return res.status(404).json({ message: "Team not found" });
         }
-        user.teamId =teamId;
+        user.teamId = teamId;
         await user.save();
 
-        res.status (200).json({message :"User assigned to Team" , user});
+        res.status(200).json({ message: "User assigned to Team", user });
 
     } catch (error) {
-        console.error(" Assigned faild " , error);
-        res.status (500).json({message : "Internal Server" , error});
+        console.error(" Assigned faild ", error);
+        res.status(500).json({ message: "Internal Server", error });
         next(error)
     }
 };
+
+export const removeTouser = async (req, res, next) => {
+
+    const { userId } = req.body;
+
+    try {
+        const user = await User.findByPk(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: " User and Team not found" });
+        }
+
+        user.teamId = null;
+        await user.save()
+
+        res.status(200).json({ message: "User Remove from Team", user })
+    } catch (error) {
+        console.error("Remove Faild", error);
+        res.status(500).json({ message: " Internal Server Error", error })
+        next(error)
+    }
+
+}

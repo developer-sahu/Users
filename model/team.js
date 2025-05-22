@@ -9,13 +9,17 @@ const Team = DB.define("Team", {
 
     },
     team_name: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-
+        type: DataTypes.STRING,
+        allowNull: false,
     },
+
     discription: {
         type: DataTypes.JSON,
         allowNull: true,
+    },
+    department: {
+        type: DataTypes.ENUM('General', 'Development', 'Digital-Marketing'),
+        allowNull: false,
     },
 
 });
