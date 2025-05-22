@@ -3,7 +3,7 @@ import { Team, User } from "../model/index.js"
 
 export const createTeam = async (req, res) => {
     try {
-        const { team_name, discription, department } = req.body;
+        const { team_name, description, department } = req.body;
 
         const checkTeam = await Team.findOne({
             where: { team_name }
@@ -15,7 +15,7 @@ export const createTeam = async (req, res) => {
 
         const newTeam = await Team.create({
             team_name,
-            discription,
+            description,
             department,
         });
         res.status(201).json({ message: "Team Created Successfully", newTeam });

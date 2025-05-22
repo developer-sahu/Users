@@ -6,14 +6,12 @@ const Team = DB.define("Team", {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-
     },
     team_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-
-    discription: {
+    description: {
         type: DataTypes.JSON,
         allowNull: true,
     },
