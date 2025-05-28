@@ -10,7 +10,6 @@ export const connectToDB = async () => {
         await DB.authenticate();
         console.log('Database Connected...!');
         await DB.sync();
-        // await DB.sync({alter : true });
     } catch (error) {
         console.log('Error Connecting Database!', error)
     }

@@ -4,22 +4,20 @@ dotenv.config();
 import express from 'express';
 import config from './config/config.js';
 import { connectToDB } from './config/database.js';
-import authRoutes from './routes/auth.routes.js';
-import teamRoutes from './routes/team.routes.js'
+import router from './routes/index.routes.js';
+
 
 const app = express();
 const PORT = config.port;
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(router);
 
 app.get('/', (req, res) => {
     res.json({ message: "Welcome to the API" });
 });
-
-app.use('/auth', authRoutes);
-app.use('/team', teamRoutes);
 
 
 (async () => {

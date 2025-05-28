@@ -16,9 +16,6 @@ const User = DB.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        validate: {
-            isEmail: true,
-        }
     },
     password: {
         type: DataTypes.STRING,
@@ -33,7 +30,7 @@ const User = DB.define("User", {
         type: DataTypes.ENUM('General', 'Development', 'Digital-Marketing'),
         allowNull: false,
         defaultValue: 'General',
-    }, 
+    },
 });
 
 export default User;
