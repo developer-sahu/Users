@@ -11,15 +11,14 @@ const Team = DB.define("Team", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    department: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     description: {
         type: DataTypes.JSON,
         allowNull: true,
     },
-    department: {
-        type: DataTypes.ENUM('General', 'Development', 'Digital-Marketing'),
-        allowNull: false,
-    },
-
 });
 
 export default Team;

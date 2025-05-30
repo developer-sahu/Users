@@ -1,4 +1,3 @@
-// models/User.js
 import { DataTypes } from "sequelize";
 import { DB } from "../config/database.js";
 
@@ -15,7 +14,6 @@ const User = DB.define("User", {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
     password: {
         type: DataTypes.STRING,
@@ -31,6 +29,7 @@ const User = DB.define("User", {
         allowNull: false,
         defaultValue: 'General',
     },
+
 });
 
 export default User;
