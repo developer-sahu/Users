@@ -1,13 +1,15 @@
 import express from "express";
-import { createTeam, assignTouser, removeTouser, assignTeamLeader } from "../controller/teamController.js";
+import { createTeam, assignUser, removeUser, assignTeamLeader ,removedTeamLeader } from "../controller/teamController.js";
 
 const router = express.Router();
 
-router.post('/create', createTeam);
-router.post('/assign', assignTouser);
-router.post('/removed', removeTouser);
+router.post('/create-team', createTeam);
+router.post('/assign-user', assignUser);
+router.post('/removed-user', removeUser);
 
 router.put('/assign-tl', assignTeamLeader);
+router.post('/removed-tl',removedTeamLeader);
+
 
 export default router;
 

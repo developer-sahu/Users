@@ -9,4 +9,7 @@ User.belongsTo(Team, { foreignKey: 'teamId', as: 'team' });
 Team.belongsTo(User, { foreignKey: 'teamleaderId', as: 'teamLeader' });
 User.hasOne(Team, { foreignKey: 'teamleaderId', as: 'ledTeam' });
 
+Team.belongsToMany(User, { as: 'managers', through: 'TeamManagers' });
+User.belongsToMany(Team, { as: 'managedTeams', through: 'TeamManagers' });
+
 export { User, Team };
